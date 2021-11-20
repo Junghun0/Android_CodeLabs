@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.util.Consumer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -163,5 +164,20 @@ class WindowManagerMainActivity : AppCompatActivity() {
         featureRectInView.offset(-viewLocationInWindow[0], -viewLocationInWindow[1])
 
         return featureRectInView
+    }
+
+    private fun printLayoutStateChange(newLayoutInfo: WindowLayoutInfo) {
+        binding.layoutChange.text = newLayoutInfo.toString()
+        if (newLayoutInfo.displayFeatures.isNotEmpty()) {
+            binding.configurationChanged.text = "Spanned across displays"
+        } else {
+            binding.configurationChanged.text = "One logic/physical display - unspanned"
+        }
+    }
+
+    inner class LayoutStateChangeCallback : Consumer<WindowLayoutInfo> {
+        override fun accept(newLayoutInfo: WindowLayoutInfo) {
+            printLayoutStateChange(newLayoutInfo)
+        }
     }
 }
