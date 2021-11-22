@@ -13,6 +13,7 @@
       Log.i(TAG, "New bounds : {$currentBounds}")
       ~~~
       computeMaximumWindowMetrics -> 디바이스의 전체 사용가능한 크기
+      
       computeCurrentWindowMetrics -> 현재 액티비티가 차지하고 있는 영역
       
 - DisplayFeature [앱 동작을 위해 확인이 필요한 디스플레이 특징들]
