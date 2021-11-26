@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "CodeLabs"
 include ':app'
 include ':app:windowmanager'
+include ':app:basic_coroutine'
